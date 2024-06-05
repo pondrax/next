@@ -26,5 +26,8 @@ steps:
 
 - script: |
     bun install
+  displayName: 'Install dependencies'
+
+- script: |
     bun run build
-  displayName: 'bun install and build'
+  displayName: 'Build project'
