@@ -15,14 +15,12 @@ steps:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
 
-
-- script: |
-    curl -fsSL https://bun.sh/install | bash
-    export BUN_INSTALL="/home/vsts/.bun"
-    export PATH="$BUN_INSTALL/bin:$PATH"
-    echo '##vso[task.setvariable variable=BUN_INSTALL]$(BUN_INSTALL)'
-    echo '##vso[task.setvariable variable=PATH]$(PATH)'
-  displayName: 'Install Bun'
+task: Npm@1
+  displayName: 'setup bun'
+  inputs:
+    command: 'custom'
+    customCommand: 'install -g bun'
+    verbose: true
 
 - script: |
     bun install
