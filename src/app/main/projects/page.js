@@ -168,16 +168,15 @@ export default function Home() {
                 </label>
               </div>
             </label>
-        </div>
-        <div className="mt-5">
+            <div className="mt-5">
 
-          <button className="btn btn-primary">
-            Simpan
-          </button>
+              <button className="btn btn-primary">
+                Simpan
+              </button>
+            </div>
+          </form>
         </div>
-      </form>
+      </dialog>
     </div>
-      </dialog >
-    </div >
   );
 }
