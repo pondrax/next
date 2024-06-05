@@ -6,7 +6,7 @@ export default function Home() {
     <div className="bg-base-100 p-5"> 
       Landing Page
       <div>
-        <Link href="/main" class="btn btn-primary">Goto main page</Link>
+        <Link href="/main" className="btn btn-primary">Goto main page</Link>
       </div>
     </div>
   );

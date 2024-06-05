@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 
 const NEXT_PUBLIC_APP_NAME = process.env.NEXT_PUBLIC_APP_NAME;
+const NEXT_PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export default function RootLayout({ children }) {
 
@@ -20,12 +21,14 @@ export default function RootLayout({ children }) {
   return (
     <main>
       <div className="drawer lg:drawer-open">
-        <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
+        <input id="sidebar" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content bg-base-100 text-base-content p-5">
           {/* Page content here */}
 
           <div className="join mb-10 ">
-            <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
+            <label htmlFor="sidebar" className="btn drawer-button lg:hidden">
+              <span className="iconify bxs-dock-left"></span>
+            </label>
             <div className="dropdown">
               <div tabIndex={0} role="button" className="btn">
                 Theme
@@ -45,14 +48,15 @@ export default function RootLayout({ children }) {
           </div>
         </div>
         <div className="drawer-side">
-          <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
-          <ul className="menu p-4 w-64 min-h-full bg-base-200 text-base-content">
+          <label htmlFor="sidebar" aria-label="close sidebar" className="drawer-overlay"></label>
+          <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
             {/* Sidebar content here */}
-            <li>
+            <li className="mx-auto">
               <Image src="/logo.webp" width={240} height={120} className="rounded-md" alt="logo" />
             </li>
-            <li className="text-xl text-center mb-10">{NEXT_PUBLIC_APP_NAME}</li>
+            <li className="text-xl text-center">{NEXT_PUBLIC_APP_NAME}</li>
 
+            <li className="text-xs mb-10">{NEXT_PUBLIC_API_URL}</li>
             <li>
               <Link href="/main">
                 <span className="iconify bxs--home"></span>
@@ -69,6 +73,11 @@ export default function RootLayout({ children }) {
                   <li>
                     <Link href="/main/projects">
                       Semua Proyek
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/main/projects">
+                      Standar Umum
                     </Link>
                   </li>
                   <li>
@@ -107,7 +116,6 @@ export default function RootLayout({ children }) {
             <li><Link href="/main/preview">Preview</Link></li>
             {/* <li><Link href="/main/material">Material</Link></li> */}
           </ul>
-
         </div>
       </div>
     </main>

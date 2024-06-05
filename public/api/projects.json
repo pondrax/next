@@ -1,0 +1,367 @@
+[
+  {
+    "namaProyek": "Sistem Manajemen Inventaris",
+    "tanggal": "2024-06-05",
+    "manajer": {
+      "nama": "John Doe",
+      "posisi": "Manajer Proyek"
+    },
+    "pengguna": [
+      {
+        "nama": "Alice",
+        "posisi": "Pengguna Sistem"
+      },
+      {
+        "nama": "Bob",
+        "posisi": "Pengguna Sistem"
+      },
+      {
+        "nama": "Charlie",
+        "posisi": "Pengguna Sistem"
+      }
+    ],
+    "status": "Dalam Proses",
+    "lokasi": "Kantor Pusat",
+    "deskripsi": "Sistem untuk mengelola inventaris kantor secara efisien."
+  },
+  {
+    "namaProyek": "Aplikasi Manajemen Keuangan",
+    "tanggal": "2024-06-10",
+    "manajer": {
+      "nama": "Jane Smith",
+      "posisi": "Manajer Proyek"
+    },
+    "pengguna": [
+      {
+        "nama": "David",
+        "posisi": "Pengguna Sistem"
+      },
+      {
+        "nama": "Eva",
+        "posisi": "Pengguna Sistem"
+      }
+    ],
+    "status": "Selesai",
+    "lokasi": "Kantor Cabang",
+    "deskripsi": "Aplikasi untuk mengelola keuangan perusahaan secara terintegrasi."
+  },
+  {
+    "namaProyek": "Sistem Manajemen SDM",
+    "tanggal": "2024-07-15",
+    "manajer": {
+      "nama": "Michael Johnson",
+      "posisi": "Manajer Proyek"
+    },
+    "pengguna": [
+      {
+        "nama": "Emily",
+        "posisi": "Pengguna Sistem"
+      },
+      {
+        "nama": "Frank",
+        "posisi": "Pengguna Sistem"
+      },
+      {
+        "nama": "Grace",
+        "posisi": "Pengguna Sistem"
+      }
+    ],
+    "status": "Dalam Proses",
+    "lokasi": "Kantor Pusat",
+    "deskripsi": "Sistem untuk manajemen sumber daya manusia secara efektif."
+  },
+  {
+    "namaProyek": "Aplikasi Pencarian Barang",
+    "tanggal": "2024-08-20",
+    "manajer": {
+      "nama": "Emma Watson",
+      "posisi": "Manajer Proyek"
+    },
+    "pengguna": [
+      {
+        "nama": "Harry",
+        "posisi": "Pengguna Sistem"
+      },
+      {
+        "nama": "Isabella",
+        "posisi": "Pengguna Sistem"
+      }
+    ],
+    "status": "Selesai",
+    "lokasi": "Kantor Cabang",
+    "deskripsi": "Aplikasi untuk pencarian barang di gudang secara cepat."
+  },
+  {
+    "namaProyek": "Sistem Manajemen Proses",
+    "tanggal": "2024-09-10",
+    "manajer": {
+      "nama": "William Brown",
+      "posisi": "Manajer Proyek"
+    },
+    "pengguna": [
+      {
+        "nama": "Jack",
+        "posisi": "Pengguna Sistem"
+      },
+      {
+        "nama": "Lily",
+        "posisi": "Pengguna Sistem"
+      }
+    ],
+    "status": "Dalam Proses",
+    "lokasi": "Kantor Pusat",
+    "deskripsi": "Sistem untuk mengelola proses bisnis secara efisien."
+  },
+  {
+    "namaProyek": "Aplikasi Manajemen Produksi",
+    "tanggal": "2024-10-05",
+    "manajer": {
+      "nama": "Olivia Garcia",
+      "posisi": "Manajer Proyek"
+    },
+    "pengguna": [
+      {
+        "nama": "Mason",
+        "posisi": "Pengguna Sistem"
+      },
+      {
+        "nama": "Nora",
+        "posisi": "Pengguna Sistem"
+      }
+    ],
+    "status": "Selesai",
+    "lokasi": "Kantor Cabang",
+    "deskripsi": "Aplikasi untuk mengelola produksi barang secara efisien."
+  },
+  {
+    "namaProyek": "Sistem Manajemen Jaringan",
+    "tanggal": "2024-11-20",
+    "manajer": {
+      "nama": "Alexander Lee",
+      "posisi": "Manajer Proyek"
+    },
+    "pengguna": [
+      {
+        "nama": "Oliver",
+        "posisi": "Pengguna Sistem"
+      },
+      {
+        "nama": "Penelope",
+        "posisi": "Pengguna Sistem"
+      }
+    ],
+    "status": "Dalam Proses",
+    "lokasi": "Kantor Pusat",
+    "deskripsi": "Sistem untuk manajemen jaringan komputer secara efektif."
+  },
+  {
+    "namaProyek": "Aplikasi Pemesanan Online",
+    "tanggal": "2024-12-15",
+    "manajer": {
+      "nama": "Sophia Martinez",
+      "posisi": "Manajer Proyek"
+    },
+    "pengguna": [
+      {
+        "nama": "Quinn",
+        "posisi": "Pengguna Sistem"
+      },
+      {
+        "nama": "Ryan",
+        "posisi": "Pengguna Sistem"
+      }
+    ],
+    "status": "Dalam Proses",
+    "lokasi": "Kantor Cabang",
+    "deskripsi": "Aplikasi untuk pemesanan produk secara online."
+  },
+  {
+    "namaProyek": "Sistem Manajemen Layanan Pelanggan",
+    "tanggal": "2025-01-10",
+    "manajer": {
+      "nama": "Charlotte Taylor",
+      "posisi": "Manajer Proyek"
+    },
+    "pengguna": [
+      {
+        "nama": "Samuel",
+        "posisi": "Pengguna Sistem"
+      },
+      {
+        "nama": "Tiffany",
+        "posisi": "Pengguna Sistem"
+      }
+    ],
+    "status": "Selesai",
+    "lokasi": "Kantor Pusat",
+    "deskripsi": "Sistem untuk manajemen layanan pelanggan secara efektif."
+  },
+  {
+    "namaProyek": "Aplikasi Manajemen Inventaris",
+    "tanggal": "2025-02-20",
+    "manajer": {
+      "nama": "Lucas Anderson",
+      "posisi": "Manajer Proyek"
+    },
+    "pengguna": [
+      {
+        "nama": "Victoria",
+        "posisi": "Pengguna Sistem"
+      },
+      {
+        "nama": "William",
+        "posisi": "Pengguna Sistem"
+      }
+    ],
+    "status": "Dalam Proses",
+    "lokasi": "Kantor Cabang",
+    "deskripsi": "Aplikasi untuk mengelola inventaris secara terintegrasi."
+  },
+  {
+    "namaProyek": "Sistem Manajemen Proyek",
+    "tanggal": "2025-03-15",
+    "manajer": {
+      "nama": "Gabriel Wilson",
+      "posisi": "Manajer Proyek"
+    },
+    "pengguna": [
+      {
+        "nama": "Xavier",
+        "posisi": "Pengguna Sistem"
+      },
+      {
+        "nama": "Yvonne",
+        "posisi": "Pengguna Sistem"
+      }
+    ],
+    "status": "Selesai",
+    "lokasi": "Kantor Pusat",
+    "deskripsi": "Sistem untuk manajemen proyek secara efisien."
+  },
+  {
+    "namaProyek": "Aplikasi Analisis Data",
+    "tanggal": "2025-04-10",
+    "manajer": {
+      "nama": "Ethan Thompson",
+      "posisi": "Manajer Proyek"
+    },
+    "pengguna": [
+      {
+        "nama": "Zoe",
+        "posisi": "Pengguna Sistem"
+      },
+      {
+        "nama": "Adam",
+        "posisi": "Pengguna Sistem"
+      }
+    ],
+    "status": "Dalam Proses",
+    "lokasi": "Kantor Cabang",
+    "deskripsi": "Aplikasi untuk analisis data bisnis secara mendalam."
+  },
+  {
+    "namaProyek": "Sistem Manajemen Penjualan",
+    "tanggal": "2025-05-05",
+    "manajer": {
+      "nama": "Hannah Moore",
+      "posisi": "Manajer Proyek"
+    },
+    "pengguna": [
+      {
+        "nama": "Carlos",
+        "posisi": "Pengguna Sistem"
+      },
+      {
+        "nama": "Diana",
+        "posisi": "Pengguna Sistem"
+      }
+    ],
+    "status": "Selesai",
+    "lokasi": "Kantor Pusat",
+    "deskripsi": "Sistem untuk manajemen penjualan produk secara efektif."
+  },
+  {
+    "namaProyek": "Aplikasi Manajemen Risiko",
+    "tanggal": "2025-06-20",
+    "manajer": {
+      "nama": "Matthew Clark",
+      "posisi": "Manajer Proyek"
+    },
+    "pengguna": [
+      {
+        "nama": "Emma",
+        "posisi": "Pengguna Sistem"
+      },
+      {
+        "nama": "Finn",
+        "posisi": "Pengguna Sistem"
+      }
+    ],
+    "status": "Dalam Proses",
+    "lokasi": "Kantor Cabang",
+    "deskripsi": "Aplikasi untuk manajemen risiko bisnis secara holistik."
+  },
+  {
+    "namaProyek": "Sistem Manajemen Layanan TI",
+    "tanggal": "2025-07-15",
+    "manajer": {
+      "nama": "Harper Baker",
+      "posisi": "Manajer Proyek"
+    },
+    "pengguna": [
+      {
+        "nama": "Gavin",
+        "posisi": "Pengguna Sistem"
+      },
+      {
+        "nama": "Holly",
+        "posisi": "Pengguna Sistem"
+      }
+    ],
+    "status": "Selesai",
+    "lokasi": "Kantor Pusat",
+    "deskripsi": "Sistem untuk manajemen layanan teknologi informasi."
+  },
+  {
+    "namaProyek": "Aplikasi Manajemen Anggota",
+    "tanggal": "2025-08-10",
+    "manajer": {
+      "nama": "Liam Hill",
+      "posisi": "Manajer Proyek"
+    },
+    "pengguna": [
+      {
+        "nama": "Ivy",
+        "posisi": "Pengguna Sistem"
+      },
+      {
+        "nama": "Jason",
+        "posisi": "Pengguna Sistem"
+      }
+    ],
+    "status": "Dalam Proses",
+    "lokasi": "Kantor Cabang",
+    "deskripsi": "Aplikasi untuk manajemen anggota organisasi secara efektif."
+  },
+  {
+    "namaProyek": "Sistem Manajemen Distribusi",
+    "tanggal": "2025-09-05",
+    "manajer": {
+      "nama": "Nora Young",
+      "posisi": "Manajer Proyek"
+    },
+    "pengguna": [
+      {
+        "nama": "Kevin",
+        "posisi": "Pengguna Sistem"
+      },
+      {
+        "nama": "Luna",
+        "posisi": "Pengguna Sistem"
+      }
+    ],
+    "status": "Selesai",
+    "lokasi": "Kantor Pusat",
+    "deskripsi": "Sistem untuk manajemen distribusi produk secara efisien."
+  }
+]

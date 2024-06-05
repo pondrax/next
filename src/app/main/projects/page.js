@@ -1,24 +1,72 @@
 'use client'
+
+import Link from "next/link";
+import useSWR from "swr";
+import { useForm } from "react-hook-form";
+import { useEffect } from "react";
+
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
 export default function Home() {
+  const { register, handleSubmit } = useForm()
+  const {
+    data,
+    error,
+    isValidating,
+    mutate: mutateData
+  } = useSWR(API_URL + '/api/projects', url => fetch(url).then(res => res.json()));
+
+
+  const postData = async (formData) => {
+    try {
+      // Perform the POST request
+      const response = await fetch(API_URL + '/api/projects', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      // Check if request was successful
+      if (!response.ok) {
+        throw new Error('Failed to post data');
+      }
+
+      // Update the data in the cache
+      document.getElementById('modal-add').close()
+      mutateData();
+    } catch (error) {
+      console.error('Error posting data:', error);
+      throw error;
+    }
+  };
+  useEffect(() => {
+    {
+
+      console.log(error)
+
+    }
+  })
+
   return (
     <div className="w-full max-w-screen-xl">
       <div className="text-sm breadcrumbs mb-5">
         <ul>
-          <li><a>Beranda</a></li>
+          <li><Link href="/main">Beranda</Link></li>
           <li>Semua Proyek</li>
         </ul>
       </div>
 
-
-      <div className="">
+      <div>
         <div className="flex justify-between">
-          <div class="join">
+          <div className="join">
             <button
-              class="btn btn-primary join-item"
+              className="btn btn-primary join-item"
               onClick={() => document.getElementById('modal-add').showModal()}>
               Buat Proyek Baru
             </button>
-            {/* <button class="btn btn-sm join-item">Preview</button> */}
+            {/* <button className="btn btn-sm join-item">Preview</button> */}
           </div>
           <label className="input input-bordered flex items-center gap-2">
             <input type="text" className="grow" placeholder="Cari" />
@@ -34,93 +82,25 @@ export default function Home() {
                 <td>Tanggal</td>
                 <td>Manajer</td>
                 <td>Pengguna</td>
+                <td>Status</td>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th>1</th>
-                <td>Cy Ganderton</td>
-                <td>3/25/2021</td>
-                <td>Quality Control Specialist</td>
-                <td>Canada</td>
-              </tr>
-              <tr>
-                <th>2</th>
-                <td>Hart Hagerty</td>
-                <td>3/25/2021</td>
-                <td>Desktop Support Technician</td>
-                <td>United States</td>
-              </tr>
-              <tr>
-                <th>3</th>
-                <td>China</td>
-                <td>8/15/2020</td>
-                <td>Carroll Group</td>
-                <td>Red</td>
-              </tr>
-              <tr>
-                <th>4</th>
-                <td>Marjy Ferencz</td>
-                <td>3/25/2021</td>
-                <td>Crimson</td>
-                <td>Russia</td>
-              </tr>
-              <tr>
-                <th>5</th>
-                <td>Yancy Tear</td>
-                <td>5/22/2020</td>
-                <td>Brazil</td>
-                <td>Indigo</td>
-              </tr>
-              <tr>
-                <th>6</th>
-                <td>Wiza, Bins and Emard</td>
-                <td>12/8/2020</td>
-                <td>Venezuela</td>
-                <td>Purple</td>
-              </tr>
-              <tr>
-                <th>7</th>
-                <td>Schuster-Schimmel</td>
-                <td>2/17/2021</td>
-                <td>Philippines</td>
-                <td>Yellow</td>
-              </tr>
-              <tr>
-                <th>8</th>
-                <td>Sammy Seston</td>
-                <td>5/23/2020</td>
-                <td>Crimson</td>
-                <td>Crimson</td>
-              </tr>
-              <tr>
-                <th>9</th>
-                <td>Lesya Tinham</td>
-                <td>2/21/2021</td>
-                <td>Philippines</td>
-                <td>Maroon</td>
-              </tr>
-              <tr>
-                <th>10</th>
-                <td>Zaneta Tewkesbury</td>
-                <td>6/23/2020</td>
-                <td>VP Marketing</td>
-                <td>Green</td>
-              </tr>
-              <tr>
-                <th>11</th>
-                <td>Hilpert Group</td>
-                <td>7/9/2020</td>
-                <td>Poland</td>
-                <td>Indigo</td>
-              </tr>
-              <tr>
-                <th>12</th>
-                <td>Sophi Biles</td>
-                <td>2/12/2021</td>
-                <td>Indonesia</td>
-                <td>Maroon</td>
-              </tr>
+              {
+                isValidating ? (
+                  <tr>
+                    <td colSpan={10} className="text-center">LOADING...</td>
+                  </tr>
+                ) : (data || []).map((d, i) => (
+                  <tr key={i}>
+                    <td>{i + 1}</td>
+                    <td>{d?.namaProyek}</td>
+                    <td>{d?.tanggal}</td>
+                    <td>{d?.manajer}</td>
+                    <td>{d?.staf}</td>
+                    <td>{d?.status ? 'Selesai' : 'Progress'}</td>
+                  </tr>
+                ))}
             </tbody>
             {/* <tfoot>
               <tr>
@@ -145,34 +125,59 @@ export default function Home() {
             <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
           </form>
           <h3 className="font-bold text-lg">Buat Proyek Baru</h3>
+          <form onSubmit={handleSubmit(postData)}>
+            <label className="form-control max-w-sm">
+              <div className="label">
+                <span className="label-text">Nama Proyek</span>
+              </div>
+              <input type="text" placeholder="Nama Proyek" className="input input-bordered" autoFocus={true}
+                {...register("namaProyek", { required: true, maxLength: 20 })} />
+            </label>
+            <label className="form-control max-w-sm">
+              <div className="label">
+                <span className="label-text">Tanggal</span>
+              </div>
+              <input type="date" placeholder="Tanggal" className="input input-bordered"
+                {...register("tanggal", { required: true, maxLength: 20 })} />
+            </label>
 
-          <label class="form-control w-full max-w-xs">
-            <div class="label">
-              <span class="label-text-alt">Nama Proyek</span>
-            </div>
-            <input type="text" placeholder="Nama Proyek" class="input input-bordered w-full max-w-xs" autoFocus={true}/>
-          </label>
-          <label class="form-control w-full max-w-xs">
-            <div class="label">
-              <span class="label-text-alt">Tanggal</span>
-            </div>
-            <input type="date" placeholder="Tanggal" class="input input-bordered w-full max-w-xs" />
-          </label>
+            <label className="form-control max-w-sm">
+              <div className="label">
+                <span className="label-text">Manajer</span>
+              </div>
+              <input type="text" placeholder="Manajer" className="input input-bordered "
+                {...register("tanggal", { required: true, maxLength: 20 })} />
+            </label>
 
-          <label class="form-control w-full max-w-xs">
-            <div class="label">
-              <span class="label-text-alt">Manajer</span>
-            </div>
-            <input type="text" placeholder="Manajer" class="input input-bordered w-full max-w-xs" />
-          </label>
-          <div className="mt-5">
+            <label className="form-control max-w-sm">
+              <div className="label">
+                <span className="label-text">Staf</span>
+              </div>
+              <input type="text" placeholder="Manajer" className="input input-bordered "
+                {...register("staf", { required: true, maxLength: 20 })} />
+            </label>
+
+            <label className="form-control max-w-sm">
+              <div className="label">
+                <span className="label-text">Staf</span>
+              </div>
+              <div class="form-control">
+                <label class="label cursor-pointer">
+                  <span class="label-text">Remember me</span>
+                  <input type="checkbox" class="toggle" checked />
+                </label>
+              </div>
+            </label>
+        </div>
+        <div className="mt-5">
 
           <button className="btn btn-primary">
             Simpan
           </button>
-          </div>
         </div>
-      </dialog>
+      </form>
     </div>
+      </dialog >
+    </div >
   );
 }
