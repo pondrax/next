@@ -15,7 +15,7 @@ steps:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
 
-task: Npm@1
+- task: Npm@1
   displayName: 'setup bun'
   inputs:
     command: 'custom'
