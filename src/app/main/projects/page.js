@@ -8,7 +8,7 @@ import { useEffect } from "react";
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export default function Home() {
-  const { register, handleSubmit } = useForm()
+  const { register, handleSubmit, reset } = useForm()
   const {
     data,
     error,
@@ -35,6 +35,7 @@ export default function Home() {
 
       // Update the data in the cache
       document.getElementById('modal-add').close()
+      reset()
       mutateData();
     } catch (error) {
       console.error('Error posting data:', error);
