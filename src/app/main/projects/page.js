@@ -4,11 +4,12 @@ import Link from "next/link";
 import useSWR from "swr";
 import { useForm } from "react-hook-form";
 import { useEffect } from "react";
+import dayjs from "dayjs";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export default function Home() {
-  const { register, handleSubmit, reset } = useForm()
+  const { register, handleSubmit, reset, formState: { errors } } = useForm({ mode: 'all' })
   const {
     data,
     error,
@@ -42,39 +43,41 @@ export default function Home() {
       throw error;
     }
   };
+
   useEffect(() => {
     {
 
-      console.log(error)
+      console.log(errors)
 
     }
   })
 
   return (
     <div className="w-full max-w-screen-xl">
-      <div className="text-sm breadcrumbs mb-5">
+      <div className="text-sm breadcrumbs">
         <ul>
           <li><Link href="/main">Beranda</Link></li>
+          <li><Link href="/main/projects">Proyek</Link></li>
           <li>Semua Proyek</li>
         </ul>
       </div>
 
+      <div className="mb-5">
+        Daftar Proyek
+      </div>
       <div>
         <div className="flex justify-between">
-          <div className="join">
-            <button
-              className="btn btn-primary join-item"
-              onClick={() => document.getElementById('modal-add').showModal()}>
-              Buat Proyek Baru
-            </button>
-            {/* <button className="btn btn-sm join-item">Preview</button> */}
-          </div>
+          <button
+            className="btn btn-primary join-item"
+            onClick={() => document.getElementById('modal-add').showModal()}>
+            Buat Proyek Baru
+          </button>
           <label className="input input-bordered flex items-center gap-2">
             <input type="text" className="grow" placeholder="Cari" />
             <span className="iconify bxs--search-alt-2"></span>
           </label>
         </div>
-        <div className="overflow-x-auto w-full max-h-[500px] my-5">
+        <div className="overflow-x-auto w-full max-h-[60vh] my-5">
           <table className="table table-pin-rows table-pin-cols">
             <thead>
               <tr>
@@ -96,81 +99,80 @@ export default function Home() {
                   <tr key={i}>
                     <td>{i + 1}</td>
                     <td>{d?.namaProyek}</td>
-                    <td>{d?.tanggal}</td>
+                    <td>{dayjs(d?.tanggal).format('YYYY-MM-DD')}</td>
                     <td>{d?.manajer}</td>
                     <td>{d?.staf}</td>
                     <td>{d?.status ? 'Selesai' : 'Progress'}</td>
                   </tr>
                 ))}
             </tbody>
-            {/* <tfoot>
-              <tr>
-                <th></th>
-                <td>Name</td>
-                <td>Job</td>
-                <td>company</td>
-                <td>location</td>
-                <td>Last Login</td>
-                <td>Favorite Color</td>
-                <th></th>
-              </tr>
-            </tfoot> */}
           </table>
         </div>
       </div>
 
       <dialog id="modal-add" className="modal">
-        <div className="modal-box">
+        <div className="modal-box max-w-sm">
           <form method="dialog">
             {/* if there is a button in form, it will close the modal */}
             <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
           </form>
           <h3 className="font-bold text-lg">Buat Proyek Baru</h3>
           <form onSubmit={handleSubmit(postData)}>
-            <label className="form-control max-w-sm">
+            <label className="form-control ">
               <div className="label">
                 <span className="label-text">Nama Proyek</span>
+                <span className="label-text-alt text-error">{errors?.namaProyek?.message}</span>
               </div>
-              <input type="text" placeholder="Nama Proyek" className="input input-bordered" autoFocus={true}
-                {...register("namaProyek", { required: true, maxLength: 20 })} />
+              <input {...register('namaProyek', { required: 'This field is required' })}
+                placeholder="Nama Proyek"
+                className="input input-bordered"
+                autoFocus={true}
+              />
             </label>
-            <label className="form-control max-w-sm">
+            <label className="form-control">
               <div className="label">
                 <span className="label-text">Tanggal</span>
+                <span className="label-text-alt text-error">{errors?.tanggal?.message}</span>
               </div>
-              <input type="date" placeholder="Tanggal" className="input input-bordered"
-                {...register("tanggal", { required: true, maxLength: 20 })} />
+              <input {...register('tanggal', { required: 'This field is required' })}
+                type="date"
+                className="input input-bordered"
+              />
             </label>
 
-            <label className="form-control max-w-sm">
+            <label className="form-control">
               <div className="label">
                 <span className="label-text">Manajer</span>
+                <span className="label-text-alt text-error">{errors?.manajer?.message}</span>
               </div>
-              <input type="text" placeholder="Manajer" className="input input-bordered "
-                {...register("tanggal", { required: true, maxLength: 20 })} />
+              <input {...register('manajer', { required: 'This field is required' })}
+                placeholder="manajer"
+                className="input input-bordered"
+              />
             </label>
 
-            <label className="form-control max-w-sm">
+            <label className="form-control">
               <div className="label">
                 <span className="label-text">Staf</span>
+                <span className="label-text-alt text-error">{errors?.staf?.message}</span>
               </div>
-              <input type="text" placeholder="Manajer" className="input input-bordered "
-                {...register("staf", { required: true, maxLength: 20 })} />
+              <input {...register('staf', { required: 'This field is required' })}
+                placeholder="Staf"
+                className="input input-bordered"
+              />
             </label>
 
-            <label className="form-control max-w-sm">
-              <div className="label">
-                <span className="label-text">Staf</span>
-              </div>
-              <div class="form-control">
-                <label class="label cursor-pointer">
-                  <span class="label-text">Remember me</span>
-                  <input type="checkbox" class="toggle" checked />
-                </label>
-              </div>
-            </label>
+            <div className="form-control">
+              <label className="label cursor-pointer">
+                <span className="label-text">Selesai</span>
+                <input {...register("status")}
+                  type="checkbox"
+                  className="toggle"
+                />
+              </label>
+            </div>
+
             <div className="mt-5">
-
               <button className="btn btn-primary">
                 Simpan
               </button>

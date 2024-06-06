@@ -47,7 +47,7 @@ export default function RootLayout({ children }) {
             {children}
           </div>
         </div>
-        <div className="drawer-side">
+        <div className="drawer-side z-20">
           <label htmlFor="sidebar" aria-label="close sidebar" className="drawer-overlay"></label>
           <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
             {/* Sidebar content here */}
@@ -55,8 +55,9 @@ export default function RootLayout({ children }) {
               <Image src="/logo.webp" width={240} height={120} className="rounded-md" alt="logo" />
             </li>
             <li className="text-xl text-center">{NEXT_PUBLIC_APP_NAME}</li>
-
-            <li className="text-xs mb-10">{NEXT_PUBLIC_API_URL}</li>
+            <li className="text-xs text-center mb-10">
+              Server: {NEXT_PUBLIC_API_URL}
+            </li>
             <li>
               <Link href="/main">
                 <span className="iconify bxs--home"></span>
@@ -76,12 +77,12 @@ export default function RootLayout({ children }) {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/main/projects">
+                    <Link href="/main/projects/standards">
                       Standar Umum
                     </Link>
                   </li>
                   <li>
-                    <Link href="/main/projects">
+                    <Link href="/main/projects/beams">
                       Data Balok
                     </Link>
                   </li>
