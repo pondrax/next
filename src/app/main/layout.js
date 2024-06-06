@@ -83,16 +83,16 @@ export default function RootLayout({ children }) {
                   </li>
                   <li>
                     <Link href="/main/projects/beams">
-                      Data Balok
+                      Data Tipe Balok
                     </Link>
                   </li>
                   <li>
-                    <Link href="/main/projects">
-                      Data AS Kolom
+                    <Link href="/main/projects/structures">
+                      Susunan Balok-Kolom
                     </Link>
                   </li>
                   <li>
-                    <Link href="/main/projects">
+                    <Link href="/main/projects/resume">
                       Resume
                     </Link>
                   </li>

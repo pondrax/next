@@ -62,13 +62,13 @@ export default function Home() {
         </ul>
       </div>
       <div className="mb-5">
-        Standar Umum
+        Data Tipe Balok
       </div>
 
 
-      <div id="control" className="overflow-auto max-h-[80vh] mb-5">
-        <div className="bg-base-200 rounded-xl w-[900px] h-[750px] m-auto relative p-5 text-center" style={{ transform: 'scale(1)' }}>
-          <div className="text-xl ">DATA BALOK</div>
+      <div id="control" className="overflow-auto mb-5">
+        <div className="bg-base-200 rounded-xl w-[900px] h-[750px] m-auto relative p-5 text-center" style={{ transform: 'scale(0.8)' }}>
+          <div className="text-xl font-bold">DATA BALOK</div>
           <div className="absolute left-[40px] top-[100px] w-[260px] h-[500px] border-base-content border-2 p-12">
             <div className="absolute top-[-30px]">TUMPUAN KIRI</div>
             <div className="absolute z-20 -m-1 h-[405px]">

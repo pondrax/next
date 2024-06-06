@@ -66,9 +66,9 @@ export default function Home() {
       </div>
 
 
-      <div id="control" className="overflow-auto max-h-[80vh] mb-5">
+      <div id="control" className="overflow-auto mb-5">
         <div className="bg-base-200 rounded-xl w-[900px] h-[750px] m-auto relative p-5 text-center" style={{ transform: 'scale(0.8)' }}>
-          <div className="text-xl -mt-5">STANDAR UMUM</div>
+          <div className="text-xl font-bold -mt-2">STANDAR UMUM</div>
           <div className="absolute left-[150px] top-[37.5px] w-[600px] h-[75px] border-base-content border-l-2 border-b-2 border-r-2"></div>
           <div className="absolute left-[150px] top-[262.5px] w-[600px] h-[75px] border-base-content border-l-2 border-t-2 border-r-2"></div>
           <div className="absolute left-[75px] top-[150px] w-[300px] h-[75px] border-base-content border-l-2 border-t-2"></div>
@@ -108,23 +108,27 @@ export default function Home() {
           </div>
 
           <div className="absolute right-[50px] top-[580px] w-[20px] h-[140px] border-accent border-l-2 flex flex-col justify-center">
+            <div className="absolute bottom-0 h-full w-4 -mx-2 -skew-y-12 border-accent border-t-2 border-b-2"></div>
             H
           </div>
 
           {/** Guidelines Vertical */}
-          <div className="absolute left-[300px] top-[45px] w-[300px] h-[375px] border-primary border-l-2 border-r-2 border-dotted"></div>
-          <div className="absolute left-[150px] top-[330px] w-[600px] h-[75px] border-primary border-l-2 border-r-2 border-dotted"></div>
-          <div className="absolute left-[150px] top-[465px] w-[105px] h-[75px] border-primary border-l-2 border-r-2 border-dotted"></div>
-          <div className="absolute left-[150px] top-[585px] w-[150px] h-[150px] border-primary border-l-2 border-r-2 border-dotted"></div>
+          <div className="absolute left-[300px] top-[45px] w-[300px] h-[375px] border-primary border-l-[1px] border-r-[1px] border-dashed"></div>
+          <div className="absolute left-[150px] top-[330px] w-[600px] h-[75px] border-primary border-l-[1px] border-r-[1px] border-dashed"></div>
+          <div className="absolute left-[150px] top-[465px] w-[105px] h-[75px] border-primary border-l-[1px] border-r-[1px] border-dashed"></div>
+          <div className="absolute left-[150px] top-[585px] w-[150px] h-[150px] border-primary border-l-[1px] border-r-[1px] border-dashed"></div>
 
           {/** Guidelines Horizontal */}
           <div className="absolute left-[37.5px] top-[300px] w-[112.5px] h-[25px] border-accent border-b-2">
+            <div className="absolute bottom-0 w-full h-4 -my-2 -skew-x-12 border-accent border-l-2 border-r-2"></div>
             K.ki
           </div>
           <div className="absolute right-[37.5px] top-[300px] w-[112.5px] h-[25px] border-accent border-b-2">
+            <div className="absolute bottom-0 w-full h-4 -my-2 -skew-x-12 border-accent border-l-2 border-r-2"></div>
             K.ka
           </div>
           <div className="absolute left-[150px] top-[320px] w-[600px] h-[25px] border-accent border-b-2">
+            <div className="absolute bottom-0 w-full h-4 -my-2 -skew-x-12 border-accent border-l-2 border-r-2"></div>
             Lb
           </div>
           <div className="absolute left-[270px] top-[600px] w-[200px] text-sm">
@@ -135,7 +139,8 @@ export default function Home() {
           </div>
 
           {/** Form Input  */}
-          <div className="absolute left-[75px] top-[45px] w-[75px] h-[40px] border-secondary border-b-2 ">
+          <div className="absolute left-[75px] top-[45px] w-[75px] h-[45px] border-secondary border-b-2">
+            <div className="absolute bottom-0 w-full h-4 -my-2 -skew-x-12 border-secondary border-l-2 border-r-2"></div>
             <div className="tooltip" data-tip="VARIABLE">
               <div className="join join-horizontal">
                 <input type="number" className="join-item input input-sm input-bordered w-20" value={0.67} step={0.01} />
@@ -143,7 +148,8 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="absolute left-[80px] top-[150px] w-[75px] h-[75px] border-secondary border-l-2">
+          <div className="absolute left-[90px] top-[150px] w-[75px] h-[75px] border-secondary border-l-2">
+            <div className="absolute left-0 h-full w-4 -mx-2 -skew-y-12 border-secondary border-t-2 border-b-2"></div>
             <div className="tooltip mt-5" data-tip="VARIABLE">
               <div className="join join-horizontal">
                 <input type="number" className="join-item input input-sm input-bordered w-20" value={12} />
@@ -152,6 +158,7 @@ export default function Home() {
             </div>
           </div>
           <div className="absolute left-[300px] top-[45px] w-[75px] h-[40px] border-secondary border-b-2">
+            <div className="absolute bottom-0 w-full h-4 -my-2 -skew-x-12 border-secondary border-l-2 border-r-2"></div>
             <div className="tooltip" data-tip="VARIABLE">
               <div className="join join-horizontal">
                 <input type="number" className="join-item input input-sm input-bordered w-20" value={15} />
@@ -160,6 +167,7 @@ export default function Home() {
             </div>
           </div>
           <div className="absolute left-[225px] top-[270px] w-[75px] h-[40px] border-secondary border-b-2">
+            <div className="absolute bottom-0 w-full h-4 -my-2 -skew-x-12 border-secondary border-l-2 border-r-2"></div>
             <div className="tooltip" data-tip="VARIABLE">
               <div className="join join-horizontal">
                 <input type="number" className="join-item input input-sm input-bordered w-20" value={20} />
@@ -167,7 +175,8 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="absolute left-[150px] top-[360px] w-[150px] h-[40px] border-secondary border-b-2 ">
+          <div className="absolute left-[150px] top-[360px] w-[150px] h-[40px] border-secondary border-b-2">
+            <div className="absolute bottom-0 w-full h-4 -my-2 -skew-x-12 border-secondary border-l-2 border-r-2"></div>
             <div className="tooltip mb-2" data-tip="VARIABLE">
               <div className="join join-horizontal">
                 <input type="number" className="join-item input input-sm input-bordered w-20" value={0.25} />
@@ -177,6 +186,7 @@ export default function Home() {
             Tumpuan
           </div>
           <div className="absolute left-[300px] top-[360px] w-[300px] h-[40px] border-secondary border-b-2 ">
+            <div className="absolute bottom-0 w-full h-4 -my-2 -skew-x-12 border-secondary border-l-2 border-r-2"></div>
             <div className="btn btn-sm btn-ghost mb-2">{0.5} Lb</div>
             <br />
             Lapangan
@@ -184,6 +194,7 @@ export default function Home() {
 
 
           <div className="absolute left-[150px] top-[490px] w-[105px] h-[40px] border-secondary border-b-2">
+            <div className="absolute bottom-0 w-full h-4 -my-2 -skew-x-12 border-secondary border-l-2 border-r-2"></div>
             <div className="tooltip mb-2" data-tip="VARIABLE">
               <div className="join join-horizontal">
                 <input type="number" className="join-item input input-sm input-bordered w-20" value={40} />
@@ -192,6 +203,7 @@ export default function Home() {
             </div>
           </div>
           <div className="absolute left-[150px] top-[700px] w-[150px] h-[40px] border-secondary border-b-2">
+            <div className="absolute bottom-0 w-full h-4 -my-2 -skew-x-12 border-secondary border-l-2 border-r-2"></div>
             <div className="tooltip mb-2" data-tip="VARIABLE">
               <div className="join join-horizontal">
                 <input type="number" className="join-item input input-sm input-bordered w-20" value={500} />
@@ -201,6 +213,7 @@ export default function Home() {
           </div>
 
           <div className="absolute right-[90px] top-[630px] w-[130px] h-[50px] border-secondary border-l-2">
+            <div className="absolute bottom-0 h-full w-4 -mx-2 -skew-y-12 border-secondary border-t-2 border-b-2"></div>
             <div className="tooltip mt-3" data-tip="VARIABLE">
               <div className="join join-horizontal">
                 <input type="number" className="join-item input input-sm input-bordered w-20" value={0.3} />
