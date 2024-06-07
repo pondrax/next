@@ -1,10 +1,15 @@
 'use client'
 
+import { useEffect, Suspense } from "react";
+import { useForm } from "react-hook-form";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import useSWR from "swr";
-import { useForm } from "react-hook-form";
-import { useEffect } from "react";
 import dayjs from "dayjs";
+
+const Space = dynamic(() => import('react-zoomable-ui').then(module => module.Space), {
+  ssr: false,
+});
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -65,257 +70,262 @@ export default function Home() {
         Data Tipe Balok
       </div>
 
+      <div style={{ position: 'relative', height: '80vh' }}>
+        <Suspense fallback={<div>Loading..</div>}>
+          <Space>
 
-      <div id="control" className="overflow-auto mb-5">
-        <div className="bg-base-200 rounded-xl w-[900px] h-[750px] m-auto relative p-5 text-center" style={{ transform: 'scale(0.8)' }}>
-          <div className="text-xl font-bold">DATA BALOK</div>
-          <div className="absolute left-[40px] top-[100px] w-[260px] h-[500px] border-base-content border-2 p-12">
-            <div className="absolute top-[-30px]">TUMPUAN KIRI</div>
-            <div className="absolute z-20 -m-1 h-[405px]">
-              {Array.from({ length: 3 }).map((_, i) => (
-                <div className="absolute top-0 w-4 h-4 bg-base-content rounded-full -m-1" style={{ left: i * (160/ 2) }}></div>
-              ))}
-              {Array.from({ length: 4 }).map((_, i) => (
-                <div className="absolute bottom-0 w-4 h-4 -m-1 bg-base-content rounded-full" style={{ left: i * (160 / 3) }}></div>
-              ))}
+            <div id="control" className="p-5 bg-base-200 rounded-xl flex justify-center">
+              <div className="w-[900px] h-[750px] m-auto relative text-center" style={{ transform: 'scale(0.8)' }}>
+                <div className="text-xl font-bold">DATA BALOK</div>
+                <div className="absolute left-[40px] top-[100px] w-[260px] h-[500px] border-base-content border-2 p-12">
+                  <div className="absolute top-[-30px]">TUMPUAN KIRI</div>
+                  <div className="absolute z-20 -m-1 h-[405px]">
+                    {Array.from({ length: 3 }).map((_, i) => (
+                      <div key={i} className="absolute top-0 w-4 h-4 bg-base-content rounded-full -m-1" style={{ left: i * (160 / 2) }}></div>
+                    ))}
+                    {Array.from({ length: 4 }).map((_, i) => (
+                      <div key={i} className="absolute bottom-0 w-4 h-4 -m-1 bg-base-content rounded-full" style={{ left: i * (160 / 3) }}></div>
+                    ))}
+                  </div>
+                  <div className="relative w-full h-full border-base-content border-2">
+                    <div className="absolute left-1/2 border-primary border-dashed border-l-2 h-full"></div>
+                    <div className="absolute top-1/2 border-primary border-dashed border-t-2 w-full"></div>
+
+
+                    <div className="absolute left-[-60px] top-[-40px] w-[150px] h-[40px]">
+                      <div className="tooltip mb-2" data-tip="VARIABLE">
+                        <div className="join join-horizontal">
+                          <div className="join-item btn btn-sm btn-info">N1</div>
+                          <input type="number" className="join-item input input-sm input-bordered w-20" defaultValue={3} />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="absolute right-[-60px] top-[-40px] w-[150px] h-[40px]">
+                      <div className="tooltip mb-2" data-tip="VARIABLE">
+                        <div className="join join-horizontal">
+                          <div className="join-item btn btn-sm btn-info">D1</div>
+                          <input type="number" className="join-item input input-sm input-bordered w-20" defaultValue={4} />
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div className="absolute left-[-60px] bottom-[-50px] w-[150px] h-[40px]">
+                      <div className="tooltip mb-2" data-tip="VARIABLE">
+                        <div className="join join-horizontal">
+                          <div className="join-item btn btn-sm btn-info">N2</div>
+                          <input type="number" className="join-item input input-sm input-bordered w-20" defaultValue={4} />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="absolute right-[-60px] bottom-[-50px] w-[150px] h-[40px]">
+                      <div className="tooltip mb-2" data-tip="VARIABLE">
+                        <div className="join join-horizontal">
+                          <div className="join-item btn btn-sm btn-info">D2</div>
+                          <input type="number" className="join-item input input-sm input-bordered w-20" defaultValue={4} />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="absolute right-[-150px] top-[150px] w-[150px] h-[40px]">
+                      <div className="tooltip mb-2" data-tip="VARIABLE">
+                        <div className="join join-horizontal">
+                          <div className="join-item btn btn-sm btn-info">N3</div>
+                          <input type="number" className="join-item input input-sm input-bordered w-20" defaultValue={4} />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="absolute right-[-150px] top-[190px] w-[150px] h-[40px]">
+                      <div className="tooltip mb-2" data-tip="VARIABLE">
+                        <div className="join join-horizontal">
+                          <div className="join-item btn btn-sm btn-info">D3</div>
+                          <input type="number" className="join-item input input-sm input-bordered w-20" defaultValue={4} />
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div className="absolute right-[-200px] top-[40px] w-[150px] h-[40px]">
+                      <div className="tooltip mb-2" data-tip="VARIABLE">
+                        <div className="join join-horizontal">
+                          <div className="join-item btn btn-sm btn-info">DS</div>
+                          <input type="number" className="join-item input input-sm input-bordered w-20" defaultValue={4} />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="absolute right-[-200px] top-[80px] w-[150px] h-[40px]">
+                      <div className="tooltip mb-2" data-tip="VARIABLE">
+                        <div className="join join-horizontal">
+                          <div className="join-item btn btn-sm btn-info">SS</div>
+                          <input type="number" className="join-item input input-sm input-bordered w-20" defaultValue={4} />
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div className="absolute right-[-200px] bottom-[100px] w-[150px] h-[40px]">
+                      <div className="tooltip mb-2" data-tip="VARIABLE">
+                        <div className="join join-horizontal">
+                          <div className="join-item btn btn-sm btn-info">NH</div>
+                          <input type="number" className="join-item input input-sm input-bordered w-20" defaultValue={4} />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="absolute right-[-200px] bottom-[60px] w-[150px] h-[40px]">
+                      <div className="tooltip mb-2" data-tip="VARIABLE">
+                        <div className="join join-horizontal">
+                          <div className="join-item btn btn-sm btn-info">DH</div>
+                          <input type="number" className="join-item input input-sm input-bordered w-20" defaultValue={4} />
+                        </div>
+                      </div>
+                    </div>
+
+
+
+                    <div className="absolute right-[-200px] bottom-[-20px] w-[150px] h-[40px]">
+                      <div className="tooltip mb-2" data-tip="VARIABLE">
+                        <div className="join join-horizontal">
+                          <div className="join-item btn btn-sm btn-info">NV</div>
+                          <input type="number" className="join-item input input-sm input-bordered w-20" defaultValue={4} />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="absolute right-[-200px] bottom-[-60px] w-[150px] h-[40px]">
+                      <div className="tooltip mb-2" data-tip="VARIABLE">
+                        <div className="join join-horizontal">
+                          <div className="join-item btn btn-sm btn-info">DV</div>
+                          <input type="number" className="join-item input input-sm input-bordered w-20" defaultValue={4} />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="absolute left-[-100px] bottom-[-120px] w-[150px] h-[40px]">
+                      <div className="tooltip mb-2" data-tip="VARIABLE">
+                        <div className="join join-horizontal">
+                          <div className="join-item btn btn-sm btn-info">P</div>
+                          <input type="number" className="join-item input input-sm input-bordered w-20" defaultValue={4} />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="absolute left-[-100px] top-[100px] w-[150px] h-[40px]">
+                      <div className="tooltip mb-2" data-tip="VARIABLE">
+                        <div className="join join-horizontal">
+                          <div className="join-item btn btn-sm btn-info">t</div>
+                          <input type="number" className="join-item input input-sm input-bordered w-20" defaultValue={4} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+
+                <div className="absolute left-[500px] top-[100px] w-[260px] h-[500px] border-base-content border-2 p-12">
+                  <div className="absolute top-[-30px]">TUMPUAN KANAN</div>
+                  <div className="relative w-full h-full border-base-content border-2">
+                    <div className="absolute left-1/2 border-primary border-dashed border-l-2 h-full"></div>
+                    <div className="absolute top-1/2 border-primary border-dashed border-t-2 w-full"></div>
+
+
+                    <div className="absolute left-[-60px] top-[-40px] w-[150px] h-[40px]">
+                      <div className="tooltip mb-2" data-tip="VARIABLE">
+                        <div className="join join-horizontal">
+                          <div className="join-item btn btn-sm btn-info">N4</div>
+                          <input type="number" className="join-item input input-sm input-bordered w-20" defaultValue={4} />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="absolute right-[-60px] top-[-40px] w-[150px] h-[40px]">
+                      <div className="tooltip mb-2" data-tip="VARIABLE">
+                        <div className="join join-horizontal">
+                          <div className="join-item btn btn-sm btn-info">D4</div>
+                          <input type="number" className="join-item input input-sm input-bordered w-20" defaultValue={4} />
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div className="absolute left-[-60px] bottom-[-50px] w-[150px] h-[40px]">
+                      <div className="tooltip mb-2" data-tip="VARIABLE">
+                        <div className="join join-horizontal">
+                          <div className="join-item btn btn-sm btn-info">N5</div>
+                          <input type="number" className="join-item input input-sm input-bordered w-20" defaultValue={4} />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="absolute right-[-60px] bottom-[-50px] w-[150px] h-[40px]">
+                      <div className="tooltip mb-2" data-tip="VARIABLE">
+                        <div className="join join-horizontal">
+                          <div className="join-item btn btn-sm btn-info">D5</div>
+                          <input type="number" className="join-item input input-sm input-bordered w-20" defaultValue={4} />
+                        </div>
+                      </div>
+                    </div>
+
+
+
+                    <div className="absolute right-[-200px] top-[40px] w-[150px] h-[40px]">
+                      <div className="tooltip mb-2" data-tip="VARIABLE">
+                        <div className="join join-horizontal">
+                          <div className="join-item btn btn-sm btn-info">DT</div>
+                          <input type="number" className="join-item input input-sm input-bordered w-20" defaultValue={4} />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="absolute right-[-200px] top-[80px] w-[150px] h-[40px]">
+                      <div className="tooltip mb-2" data-tip="VARIABLE">
+                        <div className="join join-horizontal">
+                          <div className="join-item btn btn-sm btn-info">ST</div>
+                          <input type="number" className="join-item input input-sm input-bordered w-20" defaultValue={4} />
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div className="absolute right-[-200px] bottom-[100px] w-[150px] h-[40px]">
+                      <div className="tooltip mb-2" data-tip="VARIABLE">
+                        <div className="join join-horizontal">
+                          <div className="join-item btn btn-sm btn-info">NI</div>
+                          <input type="number" className="join-item input input-sm input-bordered w-20" defaultValue={4} />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="absolute right-[-200px] bottom-[60px] w-[150px] h-[40px]">
+                      <div className="tooltip mb-2" data-tip="VARIABLE">
+                        <div className="join join-horizontal">
+                          <div className="join-item btn btn-sm btn-info">DI</div>
+                          <input type="number" className="join-item input input-sm input-bordered w-20" defaultValue={4} />
+                        </div>
+                      </div>
+                    </div>
+
+
+
+                    <div className="absolute right-[-200px] bottom-[-20px] w-[150px] h-[40px]">
+                      <div className="tooltip mb-2" data-tip="VARIABLE">
+                        <div className="join join-horizontal">
+                          <div className="join-item btn btn-sm btn-info">NU</div>
+                          <input type="number" className="join-item input input-sm input-bordered w-20" defaultValue={4} />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="absolute right-[-200px] bottom-[-60px] w-[150px] h-[40px]">
+                      <div className="tooltip mb-2" data-tip="VARIABLE">
+                        <div className="join join-horizontal">
+                          <div className="join-item btn btn-sm btn-info">DU</div>
+                          <input type="number" className="join-item input input-sm input-bordered w-20" defaultValue={4} />
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
             </div>
-            <div className="relative w-full h-full border-base-content border-2">
-              <div className="absolute left-1/2 border-primary border-dashed border-l-2 h-full"></div>
-              <div className="absolute top-1/2 border-primary border-dashed border-t-2 w-full"></div>
-
-
-              <div className="absolute left-[-60px] top-[-40px] w-[150px] h-[40px]">
-                <div className="tooltip mb-2" data-tip="VARIABLE">
-                  <div className="join join-horizontal">
-                    <div className="join-item btn btn-sm btn-info">N1</div>
-                    <input type="number" className="join-item input input-sm input-bordered w-20" value={3} />
-                  </div>
-                </div>
-              </div>
-              <div className="absolute right-[-60px] top-[-40px] w-[150px] h-[40px]">
-                <div className="tooltip mb-2" data-tip="VARIABLE">
-                  <div className="join join-horizontal">
-                    <div className="join-item btn btn-sm btn-info">D1</div>
-                    <input type="number" className="join-item input input-sm input-bordered w-20" value={4} />
-                  </div>
-                </div>
-              </div>
-
-
-              <div className="absolute left-[-60px] bottom-[-50px] w-[150px] h-[40px]">
-                <div className="tooltip mb-2" data-tip="VARIABLE">
-                  <div className="join join-horizontal">
-                    <div className="join-item btn btn-sm btn-info">N2</div>
-                    <input type="number" className="join-item input input-sm input-bordered w-20" value={4} />
-                  </div>
-                </div>
-              </div>
-              <div className="absolute right-[-60px] bottom-[-50px] w-[150px] h-[40px]">
-                <div className="tooltip mb-2" data-tip="VARIABLE">
-                  <div className="join join-horizontal">
-                    <div className="join-item btn btn-sm btn-info">D2</div>
-                    <input type="number" className="join-item input input-sm input-bordered w-20" value={4} />
-                  </div>
-                </div>
-              </div>
-
-              <div className="absolute right-[-150px] top-[150px] w-[150px] h-[40px]">
-                <div className="tooltip mb-2" data-tip="VARIABLE">
-                  <div className="join join-horizontal">
-                    <div className="join-item btn btn-sm btn-info">N3</div>
-                    <input type="number" className="join-item input input-sm input-bordered w-20" value={4} />
-                  </div>
-                </div>
-              </div>
-              <div className="absolute right-[-150px] top-[190px] w-[150px] h-[40px]">
-                <div className="tooltip mb-2" data-tip="VARIABLE">
-                  <div className="join join-horizontal">
-                    <div className="join-item btn btn-sm btn-info">D3</div>
-                    <input type="number" className="join-item input input-sm input-bordered w-20" value={4} />
-                  </div>
-                </div>
-              </div>
-
-
-              <div className="absolute right-[-200px] top-[40px] w-[150px] h-[40px]">
-                <div className="tooltip mb-2" data-tip="VARIABLE">
-                  <div className="join join-horizontal">
-                    <div className="join-item btn btn-sm btn-info">DS</div>
-                    <input type="number" className="join-item input input-sm input-bordered w-20" value={4} />
-                  </div>
-                </div>
-              </div>
-              <div className="absolute right-[-200px] top-[80px] w-[150px] h-[40px]">
-                <div className="tooltip mb-2" data-tip="VARIABLE">
-                  <div className="join join-horizontal">
-                    <div className="join-item btn btn-sm btn-info">SS</div>
-                    <input type="number" className="join-item input input-sm input-bordered w-20" value={4} />
-                  </div>
-                </div>
-              </div>
-
-
-              <div className="absolute right-[-200px] bottom-[100px] w-[150px] h-[40px]">
-                <div className="tooltip mb-2" data-tip="VARIABLE">
-                  <div className="join join-horizontal">
-                    <div className="join-item btn btn-sm btn-info">NH</div>
-                    <input type="number" className="join-item input input-sm input-bordered w-20" value={4} />
-                  </div>
-                </div>
-              </div>
-              <div className="absolute right-[-200px] bottom-[60px] w-[150px] h-[40px]">
-                <div className="tooltip mb-2" data-tip="VARIABLE">
-                  <div className="join join-horizontal">
-                    <div className="join-item btn btn-sm btn-info">DH</div>
-                    <input type="number" className="join-item input input-sm input-bordered w-20" value={4} />
-                  </div>
-                </div>
-              </div>
-
-
-
-              <div className="absolute right-[-200px] bottom-[-20px] w-[150px] h-[40px]">
-                <div className="tooltip mb-2" data-tip="VARIABLE">
-                  <div className="join join-horizontal">
-                    <div className="join-item btn btn-sm btn-info">NV</div>
-                    <input type="number" className="join-item input input-sm input-bordered w-20" value={4} />
-                  </div>
-                </div>
-              </div>
-              <div className="absolute right-[-200px] bottom-[-60px] w-[150px] h-[40px]">
-                <div className="tooltip mb-2" data-tip="VARIABLE">
-                  <div className="join join-horizontal">
-                    <div className="join-item btn btn-sm btn-info">DV</div>
-                    <input type="number" className="join-item input input-sm input-bordered w-20" value={4} />
-                  </div>
-                </div>
-              </div>
-
-              <div className="absolute left-[-100px] bottom-[-120px] w-[150px] h-[40px]">
-                <div className="tooltip mb-2" data-tip="VARIABLE">
-                  <div className="join join-horizontal">
-                    <div className="join-item btn btn-sm btn-info">P</div>
-                    <input type="number" className="join-item input input-sm input-bordered w-20" value={4} />
-                  </div>
-                </div>
-              </div>
-              <div className="absolute left-[-100px] top-[100px] w-[150px] h-[40px]">
-                <div className="tooltip mb-2" data-tip="VARIABLE">
-                  <div className="join join-horizontal">
-                    <div className="join-item btn btn-sm btn-info">t</div>
-                    <input type="number" className="join-item input input-sm input-bordered w-20" value={4} />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-
-          <div className="absolute left-[500px] top-[100px] w-[260px] h-[500px] border-base-content border-2 p-12">
-            <div className="absolute top-[-30px]">TUMPUAN KANAN</div>
-            <div className="relative w-full h-full border-base-content border-2">
-              <div className="absolute left-1/2 border-primary border-dashed border-l-2 h-full"></div>
-              <div className="absolute top-1/2 border-primary border-dashed border-t-2 w-full"></div>
-
-
-              <div className="absolute left-[-60px] top-[-40px] w-[150px] h-[40px]">
-                <div className="tooltip mb-2" data-tip="VARIABLE">
-                  <div className="join join-horizontal">
-                    <div className="join-item btn btn-sm btn-info">N4</div>
-                    <input type="number" className="join-item input input-sm input-bordered w-20" value={4} />
-                  </div>
-                </div>
-              </div>
-              <div className="absolute right-[-60px] top-[-40px] w-[150px] h-[40px]">
-                <div className="tooltip mb-2" data-tip="VARIABLE">
-                  <div className="join join-horizontal">
-                    <div className="join-item btn btn-sm btn-info">D4</div>
-                    <input type="number" className="join-item input input-sm input-bordered w-20" value={4} />
-                  </div>
-                </div>
-              </div>
-
-
-              <div className="absolute left-[-60px] bottom-[-50px] w-[150px] h-[40px]">
-                <div className="tooltip mb-2" data-tip="VARIABLE">
-                  <div className="join join-horizontal">
-                    <div className="join-item btn btn-sm btn-info">N5</div>
-                    <input type="number" className="join-item input input-sm input-bordered w-20" value={4} />
-                  </div>
-                </div>
-              </div>
-              <div className="absolute right-[-60px] bottom-[-50px] w-[150px] h-[40px]">
-                <div className="tooltip mb-2" data-tip="VARIABLE">
-                  <div className="join join-horizontal">
-                    <div className="join-item btn btn-sm btn-info">D5</div>
-                    <input type="number" className="join-item input input-sm input-bordered w-20" value={4} />
-                  </div>
-                </div>
-              </div>
-
-
-
-              <div className="absolute right-[-200px] top-[40px] w-[150px] h-[40px]">
-                <div className="tooltip mb-2" data-tip="VARIABLE">
-                  <div className="join join-horizontal">
-                    <div className="join-item btn btn-sm btn-info">DT</div>
-                    <input type="number" className="join-item input input-sm input-bordered w-20" value={4} />
-                  </div>
-                </div>
-              </div>
-              <div className="absolute right-[-200px] top-[80px] w-[150px] h-[40px]">
-                <div className="tooltip mb-2" data-tip="VARIABLE">
-                  <div className="join join-horizontal">
-                    <div className="join-item btn btn-sm btn-info">ST</div>
-                    <input type="number" className="join-item input input-sm input-bordered w-20" value={4} />
-                  </div>
-                </div>
-              </div>
-
-
-              <div className="absolute right-[-200px] bottom-[100px] w-[150px] h-[40px]">
-                <div className="tooltip mb-2" data-tip="VARIABLE">
-                  <div className="join join-horizontal">
-                    <div className="join-item btn btn-sm btn-info">NI</div>
-                    <input type="number" className="join-item input input-sm input-bordered w-20" value={4} />
-                  </div>
-                </div>
-              </div>
-              <div className="absolute right-[-200px] bottom-[60px] w-[150px] h-[40px]">
-                <div className="tooltip mb-2" data-tip="VARIABLE">
-                  <div className="join join-horizontal">
-                    <div className="join-item btn btn-sm btn-info">DI</div>
-                    <input type="number" className="join-item input input-sm input-bordered w-20" value={4} />
-                  </div>
-                </div>
-              </div>
-
-
-
-              <div className="absolute right-[-200px] bottom-[-20px] w-[150px] h-[40px]">
-                <div className="tooltip mb-2" data-tip="VARIABLE">
-                  <div className="join join-horizontal">
-                    <div className="join-item btn btn-sm btn-info">NU</div>
-                    <input type="number" className="join-item input input-sm input-bordered w-20" value={4} />
-                  </div>
-                </div>
-              </div>
-              <div className="absolute right-[-200px] bottom-[-60px] w-[150px] h-[40px]">
-                <div className="tooltip mb-2" data-tip="VARIABLE">
-                  <div className="join join-horizontal">
-                    <div className="join-item btn btn-sm btn-info">DU</div>
-                    <input type="number" className="join-item input input-sm input-bordered w-20" value={4} />
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
+          </Space>
+        </Suspense>
       </div>
-
 
 
 
