@@ -63,30 +63,39 @@ export default function Home() {
       </div>
 
       <div className="mb-5">
-        Daftar Proyek
+        Resume Penulangan Balok
       </div>
       <div>
         <div className="flex justify-between">
           <button
             className="btn btn-primary join-item"
             onClick={() => document.getElementById('modal-add').showModal()}>
-            Buat Proyek Baru
+            {/* Buat Proyek Baru */}
           </button>
-          <label className="input input-bordered flex items-center gap-2">
+          {/* <label className="input input-bordered flex items-center gap-2">
             <input type="text" className="grow" placeholder="Cari" />
             <span className="iconify bxs--search-alt-2"></span>
-          </label>
+          </label> */}
         </div>
         <div className="overflow-x-auto w-full max-h-[60vh] my-5">
           <table className="table table-pin-rows table-pin-cols">
             <thead>
               <tr>
-                <th></th>
-                <td>Nama Proyek</td>
-                <td>Tanggal</td>
-                <td>Manajer</td>
-                <td>Pengguna</td>
-                <td>Status</td>
+                <th rowSpan={2} >No</th>
+                <td rowSpan={2} className="border-l">Item</td>
+                <td colSpan={3} className="border-l">Kebutuhan</td>
+                <td colSpan={2} className="border-l">Terpakai</td>
+                <td colSpan={2} className="border-l">Sisa</td>
+                <td rowSpan={2} className="border-l">% Sisa</td>
+              </tr>
+              <tr>
+                <th className="border-l">Batang</th>
+                <td>Panjang (m)</td>
+                <td>Berat (kg)</td>
+                <td className="border-l">Panjang (m)</td>
+                <td>Berat (kg)</td>
+                <td className="border-l">Panjang (m)</td>
+                <td>Berat (kg)</td>
               </tr>
             </thead>
             <tbody>
@@ -98,11 +107,15 @@ export default function Home() {
                 ) : (data || []).map((d, i) => (
                   <tr key={i}>
                     <td>{i + 1}</td>
-                    <td>{d?.namaProyek}</td>
-                    <td>{dayjs(d?.tanggal).format('YYYY-MM-DD')}</td>
-                    <td>{d?.manajer}</td>
-                    <td>{d?.staf}</td>
-                    <td>{d?.status ? 'Selesai' : 'Progress'}</td>
+                    <td className="border-l">{d?.namaProyek}</td>
+                    <td className="border-l">{Math.ceil(Math.random()*100)}</td>
+                    <td className="border-l">{(Math.random()*1000).toFixed(2)}</td>
+                    <td className="border-l">{(Math.random()*1000).toFixed(2)}</td>
+                    <td className="border-l">{(Math.random()*1000).toFixed(2)}</td>
+                    <td className="border-l">{(Math.random()*1000).toFixed(2)}</td>
+                    <td className="border-l">{(Math.random()*1000).toFixed(2)}</td>
+                    <td className="border-l">{(Math.random()*1000).toFixed(2)}</td>
+                    <td className="border-l">{(Math.random()*100).toFixed(2)} %</td>
                   </tr>
                 ))}
             </tbody>
