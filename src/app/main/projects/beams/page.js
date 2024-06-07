@@ -1,15 +1,11 @@
 'use client'
 
-import { useEffect, Suspense } from "react";
+import { TransformComponent, TransformWrapper } from "react-zoom-pan-pinch";
 import { useForm } from "react-hook-form";
-import dynamic from "next/dynamic";
+import { useEffect } from "react";
 import Link from "next/link";
 import useSWR from "swr";
 import dayjs from "dayjs";
-
-const Space = dynamic(() => import('react-zoomable-ui').then(module => module.Space), {
-  ssr: false,
-});
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -70,12 +66,11 @@ export default function Home() {
         Data Tipe Balok
       </div>
 
-      <div style={{ position: 'relative', height: '80vh' }}>
-        <Suspense fallback={<div>Loading..</div>}>
-          <Space>
-
-            <div id="control" className="p-5 bg-base-200 rounded-xl flex justify-center">
-              <div className="w-[900px] h-[750px] m-auto relative text-center" style={{ transform: 'scale(0.8)' }}>
+      <div className="mb-10">
+        <TransformWrapper centerOnInit={true}>
+          <TransformComponent wrapperStyle={{ width: '100%'}} >
+            <div id="control" className="p-5 bg-base-200 rounded-xl flex min-w-[900px] justify-center m-10">
+              <div className="w-[900px] h-[750px] m-auto relative text-center">
                 <div className="text-xl font-bold">DATA BALOK</div>
                 <div className="absolute left-[40px] top-[100px] w-[260px] h-[500px] border-base-content border-2 p-12">
                   <div className="absolute top-[-30px]">TUMPUAN KIRI</div>
@@ -323,8 +318,8 @@ export default function Home() {
               </div>
 
             </div>
-          </Space>
-        </Suspense>
+          </TransformComponent>
+        </TransformWrapper>
       </div>
 
 

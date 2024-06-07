@@ -93,7 +93,7 @@ export default function RootLayout({ children }) {
                   </li>
                   <li>
                     <Link href="/main/projects/resume">
-                      Resume
+                      Resume Perhitungan
                     </Link>
                   </li>
                 </ul>
