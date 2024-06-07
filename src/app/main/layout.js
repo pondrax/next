@@ -82,7 +82,7 @@ export default function RootLayout({ children }) {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/main/projects/beams">
+                    <Link href="/main/projects/bars">
                       Data Tipe Balok
                     </Link>
                   </li>
@@ -94,6 +94,11 @@ export default function RootLayout({ children }) {
                   <li>
                     <Link href="/main/projects/resume">
                       Resume Perhitungan
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/main/projects/bendings">
+                      Pemotongan & Penulangan
                     </Link>
                   </li>
                 </ul>

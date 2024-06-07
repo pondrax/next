@@ -74,8 +74,8 @@ export default function Home() {
         <Suspense fallback={<div>Loading..</div>}>
           <Space>
 
-            <div id="control" className="p-5 bg-base-200 rounded-xl flex min-w-[900px] justify-center m-10">
-              <div className="w-[900px] h-[750px] m-auto relative text-center">
+            <div id="control" className=" my-10">
+              <div className="w-[900px] h-[750px] m-auto relative text-center p-5 bg-base-200 rounded-xl ">
                 <div className="text-xl font-bold">DATA BALOK</div>
                 <div className="absolute left-[40px] top-[100px] w-[260px] h-[500px] border-base-content border-2 p-12">
                   <div className="absolute top-[-30px]">TUMPUAN KIRI</div>
