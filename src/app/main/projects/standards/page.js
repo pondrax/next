@@ -1,11 +1,15 @@
 'use client'
 
-import { TransformComponent, TransformWrapper } from "react-zoom-pan-pinch";
+import { useEffect, Suspense } from "react";
 import { useForm } from "react-hook-form";
-import { useEffect } from "react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import useSWR from "swr";
 import dayjs from "dayjs";
+
+const Space = dynamic(() => import('react-zoomable-ui').then(module => module.Space), {
+  ssr: false,
+});
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -65,11 +69,11 @@ export default function Home() {
       <div className="mb-5">
         Standar Umum
       </div>
-
-      <div className="mb-10">
-        <TransformWrapper centerOnInit={true}>
-          <TransformComponent wrapperStyle={{ width: '100%' }}>
-            <div id="control" className="p-5 bg-base-200 rounded-xl flex justify-center">
+      
+      <div style={{ position: 'relative', height: '100vh' }}>
+        <Suspense fallback={<div>Loading..</div>}>
+          <Space>
+            <div id="control" className="p-5 bg-base-200 rounded-xl flex min-w-[1000px] justify-center">
               <div className="w-[900px] h-[750px] relative text-center p-5 bg-base-200 rounded-xl">
                 <div className="text-xl font-bold -mt-5">STANDAR UMUM</div>
                 <div className="absolute left-[150px] top-[37.5px] w-[600px] h-[75px] border-base-content border-l-2 border-b-2 border-r-2"></div>
@@ -227,8 +231,8 @@ export default function Home() {
               </div>
             </div>
 
-          </TransformComponent>
-        </TransformWrapper>
+          </Space>
+        </Suspense>
       </div>
 
 
