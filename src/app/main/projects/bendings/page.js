@@ -203,11 +203,11 @@ export default function Home() {
             <thead>
               <tr>
                 <th>No</th>
-                <td>Diameter</td>
-                <td>Bentuk</td>
-                <td>Total (mm)</td>
-                <td>Jumlah</td>
-                <td>Kode</td>
+                <th>Diameter</th>
+                <th>Bentuk</th>
+                <th>Total (mm)</th>
+                <th>Jumlah</th>
+                <th>Kode</th>
               </tr>
             </thead>
             <tbody>
