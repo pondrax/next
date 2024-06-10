@@ -73,7 +73,7 @@ export default function Home() {
       <div style={{ position: 'relative', height: '100vh' }}>
         <Suspense fallback={<div>Loading..</div>}>
           <Space>
-            <div id="control" className="p-5 bg-base-200 rounded-xl flex min-w-[1000px] justify-center">
+            <div id="control" className="p-5 bg-base-200 rounded-xl flex min-w-full justify-center">
               <div className="w-[900px] h-[750px] relative text-center p-5 bg-base-200 rounded-xl">
                 <div className="text-xl font-bold -mt-5">STANDAR UMUM</div>
                 <div className="absolute left-[150px] top-[37.5px] w-[600px] h-[75px] border-base-content border-l-2 border-b-2 border-r-2"></div>

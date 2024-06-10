@@ -98,10 +98,10 @@ export default function Home() {
                 ) : (data || []).map((d, i) => (
                   <tr key={i}>
                     <td>{i + 1}</td>
-                    <td>{d?.namaProyek}</td>
-                    <td>{dayjs(d?.tanggal).format('YYYY-MM-DD')}</td>
-                    <td>{d?.manajer}</td>
-                    <td>{d?.staf}</td>
+                    <td>{d?.projectName}</td>
+                    <td>{dayjs(d?.date).format('YYYY-MM-DD')}</td>
+                    <td>{d?.manager}</td>
+                    <td>{JSON.stringify(d?.staff)}</td>
                     <td>{d?.status ? 'Selesai' : 'Progress'}</td>
                   </tr>
                 ))}
@@ -121,9 +121,9 @@ export default function Home() {
             <label className="form-control ">
               <div className="label">
                 <span className="label-text">Nama Proyek</span>
-                <span className="label-text-alt text-error">{errors?.namaProyek?.message}</span>
+                <span className="label-text-alt text-error">{errors?.projectName?.message}</span>
               </div>
-              <input {...register('namaProyek', { required: 'This field is required' })}
+              <input {...register('projectName', { required: 'This field is required' })}
                 placeholder="Nama Proyek"
                 className="input input-bordered"
                 autoFocus={true}
@@ -132,9 +132,9 @@ export default function Home() {
             <label className="form-control">
               <div className="label">
                 <span className="label-text">Tanggal</span>
-                <span className="label-text-alt text-error">{errors?.tanggal?.message}</span>
+                <span className="label-text-alt text-error">{errors?.date?.message}</span>
               </div>
-              <input {...register('tanggal', { required: 'This field is required' })}
+              <input {...register('date', { required: 'This field is required' })}
                 type="date"
                 className="input input-bordered"
               />
@@ -143,9 +143,9 @@ export default function Home() {
             <label className="form-control">
               <div className="label">
                 <span className="label-text">Manajer</span>
-                <span className="label-text-alt text-error">{errors?.manajer?.message}</span>
+                <span className="label-text-alt text-error">{errors?.manager?.message}</span>
               </div>
-              <input {...register('manajer', { required: 'This field is required' })}
+              <input {...register('manager', { required: 'This field is required' })}
                 placeholder="manajer"
                 className="input input-bordered"
               />
@@ -154,9 +154,9 @@ export default function Home() {
             <label className="form-control">
               <div className="label">
                 <span className="label-text">Staf</span>
-                <span className="label-text-alt text-error">{errors?.staf?.message}</span>
+                <span className="label-text-alt text-error">{errors?.staff?.message}</span>
               </div>
-              <input {...register('staf', { required: 'This field is required' })}
+              <input {...register('staff', { required: 'This field is required' })}
                 placeholder="Staf"
                 className="input input-bordered"
               />
