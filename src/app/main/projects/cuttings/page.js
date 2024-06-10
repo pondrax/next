@@ -15,13 +15,13 @@ export default function Home() {
     error,
     isValidating,
     mutate: mutateData
-  } = useSWR(API_URL + '/api/resume', url => fetch(url).then(res => res.json()));
+  } = useSWR(API_URL + '/api/cuttings', url => fetch(url).then(res => res.json()));
 
 
   const postData = async (formData) => {
     try {
       // Perform the POST request
-      const response = await fetch(API_URL + '/api/resume', {
+      const response = await fetch(API_URL + '/api/cuttings', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -51,6 +51,7 @@ export default function Home() {
 
     }
   })
+  const scale = 20;
 
   return (
     <div className="w-full max-w-screen-xl">
@@ -58,75 +59,42 @@ export default function Home() {
         <ul>
           <li><Link href="/main">Beranda</Link></li>
           <li><Link href="/main/projects">Proyek</Link></li>
-          <li>Semua Proyek</li>
+          <li>(Nama Proyek)</li>
         </ul>
       </div>
 
       <div className="mb-5">
-        Resume Perhitungan Penulangan Balok
+        Resume Pemotongan
       </div>
+
       <div>
+
         <div className="flex justify-between">
-          <button
-            className="btn btn-primary join-item"
-            onClick={() => document.getElementById('modal-add').showModal()}>
-            {/* Buat Proyek Baru */}
-          </button>
-          {/* <label className="input input-bordered flex items-center gap-2">
-            <input type="text" className="grow" placeholder="Cari" />
-            <span className="iconify bxs--search-alt-2"></span>
-          </label> */}
+          <div className="join join-horizontal">
+            <button className="btn btn-neutral join-item">
+              ALL
+            </button>
+            <button className="btn join-item">
+              D10
+            </button>
+            <button className="btn join-item">
+              D19
+            </button>
+          </div>
         </div>
         <div className="overflow-x-auto w-full max-h-[60vh] my-5">
           <table className="table table-pin-rows table-pin-cols">
             <thead>
               <tr>
                 <th>No</th>
-                <th className="border-l">Project</th>
-                <th className="border-l">Item</th>
-                <th className="border-l">
-                  <div className="h-6">Kebutuhan</div>
-                  <div>Batang</div>
-                </th>
-                <th>
-                  <div className="mt-6">Panjang (m)</div>
-                </th>
-                <th>
-                  <div className="mt-6">Berat (kg)</div>
-                </th>
-                <th className="border-l">
-                  <div className="h-6">Terpakai</div>
-                  <div>Panjang (m)</div>
-                </th>
-                <th>
-                  <div className="mt-6">Berat (kg)</div>
-                </th>
-                <th className="border-l">
-                  <div className="h-6">Terbuang</div>
-                  <div>Panjang (m)</div>
-                </th>
-                <th>
-                  <div className="mt-6">Berat (kg)</div>
-                </th>
-                <th className="border-l">Terbuang (%)</th>
+                <th>Project</th>
+                <th>Structure</th>
+                <th>Tipe</th>
+                <th>Diameter</th>
+                <th>Jumlah</th>
+                <th>Bentuk</th>
+                <th>Sisa</th>
               </tr>
-              {/* <tr>
-                <th rowSpan={2} >No</th>
-                <td rowSpan={2} className="border-l">Item</td>
-                <td colSpan={3} className="border-l">Kebutuhan</td>
-                <td colSpan={2} className="border-l">Terpakai</td>
-                <td colSpan={2} className="border-l">Sisa</td>
-                <td rowSpan={2} className="border-l">% Sisa</td>
-              </tr>
-              <tr>
-                <th className="border-l">Batang</th>
-                <td>Panjang (m)</td>
-                <td>Berat (kg)</td>
-                <td className="border-l">Panjang (m)</td>
-                <td>Berat (kg)</td>
-                <td className="border-l">Panjang (m)</td>
-                <td>Berat (kg)</td>
-              </tr> */}
             </thead>
             <tbody>
               {
@@ -137,16 +105,35 @@ export default function Home() {
                 ) : (data || []).map((d, i) => (
                   <tr key={i}>
                     <td>{i + 1}</td>
-                    <td className="border-l">{d?.projectId}</td>
-                    <td className="border-l">{d?.item}</td>
-                    <td className="border-l">{Math.ceil(Math.random() * 100)}</td>
-                    <td className="border-l">{(Math.random() * 1000).toFixed(2)}</td>
-                    <td className="border-l">{(Math.random() * 1000).toFixed(2)}</td>
-                    <td className="border-l">{(Math.random() * 1000).toFixed(2)}</td>
-                    <td className="border-l">{(Math.random() * 1000).toFixed(2)}</td>
-                    <td className="border-l">{(Math.random() * 1000).toFixed(2)}</td>
-                    <td className="border-l">{(Math.random() * 1000).toFixed(2)}</td>
-                    <td className="border-l">{(Math.random() * 100).toFixed(2)} %</td>
+                    <td>{d?.projectId}</td>
+                    <td>{d?.structureId}</td>
+                    <td>{d?.barId}</td>
+                    <td>{d?.diameter}</td>
+                    <td>{d?.quantity}</td>
+                    <td>
+                      {/* {JSON.stringify(d?.bendings)} */}
+
+                      <div className="p-2 flex gap-3">
+                        {d?.cuts?.map(c => (
+                          <div className="">
+                            <div className="border-base-content" style={{
+                              width: 100, borderBottomWidth: d?.diameter / 4 || 3
+                            }}>
+                              <div className="w-12 inline-block">{c?.length}</div> x {c?.quantity}
+                            </div>
+                            <div className="text-xs">
+                              {c?.bendings?.map(b => (
+                                <div>
+                                  <div className="w-12 inline-block">{b?.code}</div> x {b?.quantity}
+                                </div>
+                              ))}
+
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </td>
+                    <td>{d?.waste}</td>
                   </tr>
                 ))}
             </tbody>

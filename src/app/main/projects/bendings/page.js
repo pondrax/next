@@ -11,17 +11,17 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL;
 export default function Home() {
   const { register, handleSubmit, reset, formState: { errors } } = useForm({ mode: 'all' })
   const {
-    data: dataAPI,
+    data,
     error,
     isValidating,
     mutate: mutateData
-  } = useSWR(API_URL + '/api/projects', url => fetch(url).then(res => res.json()));
+  } = useSWR(API_URL + '/api/bendings', url => fetch(url).then(res => res.json()));
 
 
   const postData = async (formData) => {
     try {
       // Perform the POST request
-      const response = await fetch(API_URL + '/api/projects', {
+      const response = await fetch(API_URL + '/api/bendings', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -52,128 +52,6 @@ export default function Home() {
     }
   })
   const scale = 20;
-  const data = [
-    {
-      diameter: 19,
-      structure: {
-        left: 228,
-        top: 11772,
-        right: 0,
-        bottom: 0,
-        topleft: 0,
-        topright: 0,
-        bottomleft: 0,
-        bottomright: 0
-      },
-      quantity: 3,
-      code: '000-19-1'
-    },
-    {
-      diameter: 19,
-      structure: {
-        left: 0,
-        top: 11305,
-        right: 0,
-        bottom: 0,
-        topleft: 0,
-        topright: 0,
-        bottomleft: 0,
-        bottomright: 0
-      },
-      quantity: 2,
-      code: '000-19-2'
-    },
-    {
-      diameter: 19,
-      structure: {
-        left: 228,
-        top: 10917,
-        right: 0,
-        bottom: 0,
-        topleft: 0,
-        topright: 0,
-        bottomleft: 0,
-        bottomright: 0
-      },
-      quantity: 4,
-      code: '000-19-2'
-    },
-    {
-      diameter: 10,
-      structure: {
-        left: 228,
-        top: 8659,
-        right: 228,
-        bottom: 0,
-        topleft: 0,
-        topright: 0,
-        bottomleft: 0,
-        bottomright: 0
-      },
-      quantity: 4,
-      code: '000-19-2'
-    },
-    {
-      diameter: 10,
-      structure: {
-        left: 228,
-        top: 8649,
-        right: 228,
-        bottom: 0,
-        topleft: 0,
-        topright: 0,
-        bottomleft: 0,
-        bottomright: 0
-      },
-      quantity: 2,
-      code: '000-19-2'
-    },
-    {
-      diameter: 10,
-      structure: {
-        left: 120,
-        top: 11880,
-        right: 0,
-        bottom: 0,
-        topleft: 0,
-        topright: 0,
-        bottomleft: 0,
-        bottomright: 0
-      },
-      quantity: 4,
-      code: '000-19-2'
-    },
-    {
-      diameter: 10,
-      structure: {
-        left: 230,
-        top: 530,
-        right: 230,
-        bottom: 530,
-        topleft: 0,
-        topright: 50,
-        bottomleft: 0,
-        bottomright: 0
-      },
-      quantity: 4,
-      code: '000-19-2'
-    },
-    {
-      diameter: 10,
-      structure: {
-        left: 330,
-        top: 630,
-        right: 330,
-        bottom: 630,
-        topleft: 150,
-        topright: 150,
-        bottomleft: 0,
-        bottomright: 0
-      },
-      quantity: 4,
-      code: '000-19-2'
-    }
-  ]
 
   return (
     <div className="w-full max-w-screen-xl">
@@ -186,23 +64,32 @@ export default function Home() {
       </div>
 
       <div className="mb-5">
-        Resume Pemotongan dan Penulangan
+        Resume Penulangan
       </div>
 
       <div>
 
         <div className="flex justify-between">
-          <button
-            className="btn btn-neutral join-item"
-            onClick={() => document.getElementById('modal-add').showModal()}>
-            AS ABC-001
-          </button>
+          <div className="join join-horizontal">
+            <button className="btn btn-neutral join-item">
+              ALL
+            </button>
+            <button className="btn join-item">
+              S001
+            </button>
+            <button className="btn join-item">
+              S002
+            </button>
+          </div>
         </div>
         <div className="overflow-x-auto w-full max-h-[60vh] my-5">
           <table className="table table-pin-rows table-pin-cols">
             <thead>
               <tr>
                 <th>No</th>
+                <th>Project</th>
+                <th>Structure</th>
+                <th>Tipe</th>
                 <th>Diameter</th>
                 <th>Bentuk</th>
                 <th>Total (mm)</th>
@@ -219,6 +106,9 @@ export default function Home() {
                 ) : (data || []).map((d, i) => (
                   <tr key={i}>
                     <td>{i + 1}</td>
+                    <td>{d?.projectId}</td>
+                    <td>{d?.structureId}</td>
+                    <td>{d?.barId}</td>
                     <td>{d?.diameter}</td>
                     <td>
                       {/* {JSON.stringify(d?.structure)} */}
@@ -226,31 +116,31 @@ export default function Home() {
                       <div className="p-2">
                         <div className="relative border-base-content text-xs m-auto"
                           style={{
-                            width: Math.max(d?.structure?.top, d?.structure?.bottom) / scale,
-                            height: Math.max(d?.structure?.left, d?.structure.right) / scale,
-                            borderTopWidth: d?.structure?.top && d?.diameter / 4,
-                            borderBottomWidth: d?.structure?.bottom && d?.diameter / 4,
-                            borderLeftWidth: d?.structure?.left && d?.diameter / 4,
-                            borderRightWidth: d?.structure?.right && d?.diameter / 4,
+                            width: Math.max(d?.top, d?.bottom) / scale,
+                            height: Math.max(d?.left, d?.right) / scale,
+                            borderTopWidth: d?.top && d?.diameter / 4,
+                            borderBottomWidth: d?.bottom && d?.diameter / 4,
+                            borderLeftWidth: d?.left && d?.diameter / 4,
+                            borderRightWidth: d?.right && d?.diameter / 4,
                           }}>
-                          <div className="absolute -top-5 text-center w-full">{d?.structure?.top > 0 ? d?.structure?.top : ''}</div>
-                          {/* <div className="absolute -bottom-5 text-center w-full">{d?.structure?.bottom > 0 ? d?.structure?.bottom : ''}</div> */}
-                          <div className="absolute -left-10 text-right">{d?.structure?.left > 0 ? d.structure?.left : ''}</div>
-                          {/* <div className="absolute -right-10">{d?.structure?.right > 0 ? d?.structure?.right : ''}</div> */}
-                          <div className="absolute -bottom-5 -left-5">{d?.structure?.topleft > 0 ? d?.structure?.topleft : ''}</div>
-                          <div className="absolute -bottom-5 -right-5">{d?.structure?.topright > 0 ? d?.structure?.topright : ''}</div>
+                          <div className="absolute -top-5 text-center w-full">{d?.top > 0 ? d?.top : ''}</div>
+                          {/* <div className="absolute -bottom-5 text-center w-full">{d?.bottom > 0 ? d?.bottom : ''}</div> */}
+                          <div className="absolute -left-10 text-right">{d?.left > 0 ? d.left : ''}</div>
+                          {/* <div className="absolute -right-10">{d?.right > 0 ? d?.right : ''}</div> */}
+                          <div className="absolute -bottom-5 -left-5">{d?.topleft > 0 ? d?.topleft : ''}</div>
+                          <div className="absolute -bottom-5 -right-5">{d?.topright > 0 ? d?.topright : ''}</div>
                           <div className="absolute top-0 left-0 border-base-content rotate-45 origin-top-left" style={{
-                            width: d?.structure?.topleft / scale,
-                            borderTopWidth: d?.structure?.topleft && d?.diameter / 4,
-                          }}></div> 
+                            width: d?.topleft / scale,
+                            borderTopWidth: d?.topleft && d?.diameter / 4,
+                          }}></div>
                           <div className="absolute top-0 right-0 border-base-content -rotate-45 origin-top-right" style={{
-                            width: d?.structure?.topright / scale,
-                            borderTopWidth: d?.structure?.topright && d?.diameter / 4,
+                            width: d?.topright / scale,
+                            borderTopWidth: d?.topright && d?.diameter / 4,
                           }}></div>
                         </div>
                       </div>
                     </td>
-                    <td>{d?.structure?.left + d?.structure?.top + d?.structure?.right + d?.structure?.bottom}</td>
+                    <td>{d?.left + d?.top + d?.right + d?.bottom}</td>
                     <td>{d?.quantity}</td>
                     <td>{d?.code}</td>
                   </tr>

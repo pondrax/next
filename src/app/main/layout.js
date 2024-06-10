@@ -97,8 +97,13 @@ export default function RootLayout({ children }) {
                     </Link>
                   </li>
                   <li>
+                    <Link href="/main/projects/cuttings">
+                      Resume Pemotongan
+                    </Link>
+                  </li>
+                  <li>
                     <Link href="/main/projects/bendings">
-                      Pemotongan & Penulangan
+                      Resume Penulangan
                     </Link>
                   </li>
                 </ul>
