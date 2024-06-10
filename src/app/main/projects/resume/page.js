@@ -77,7 +77,8 @@ export default function Home() {
             <span className="iconify bxs--search-alt-2"></span>
           </label> */}
         </div>
-        <div className="overflow-x-auto w-full max-h-[60vh] my-5">
+        {/* <div className="overflow-x-auto w-full max-h-[60vh] my-5"> */}
+        <div className="overflow-x-auto w-full my-5">
           <table className="table table-pin-rows table-pin-cols">
             <thead>
               <tr>

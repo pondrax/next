@@ -1,9 +1,10 @@
 'use client'
 
-import Link from "next/link";
-import useSWR from "swr";
 import { useForm } from "react-hook-form";
 import { useEffect } from "react";
+import { nanoid } from "nanoid";
+import Link from "next/link";
+import useSWR from "swr";
 import dayjs from "dayjs";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
@@ -118,6 +119,7 @@ export default function Home() {
           </form>
           <h3 className="font-bold text-lg">Buat Proyek Baru</h3>
           <form onSubmit={handleSubmit(postData)}>
+            <input {...register('id')} type="hidden" defaultValue={nanoid(8)}/>
             <label className="form-control ">
               <div className="label">
                 <span className="label-text">Nama Proyek</span>

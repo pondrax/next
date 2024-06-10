@@ -115,16 +115,16 @@ export default function Home() {
 
                       <div className="p-2 flex gap-3">
                         {d?.cuts?.map(c => (
-                          <div className="">
-                            <div className="border-base-content" style={{
-                              width: 100, borderBottomWidth: d?.diameter / 4 || 3
+                          <div className="whitespace-nowrap text-center">
+                            <div className="border-base-content mb-1" style={{
+                              width: c?.length / scale, borderBottomWidth: d?.diameter / 4
                             }}>
-                              <div className="w-12 inline-block">{c?.length}</div> x {c?.quantity}
+                              <div className="w-16 inline-block">{c?.length}</div> x {c?.quantity}
                             </div>
                             <div className="text-xs">
                               {c?.bendings?.map(b => (
                                 <div>
-                                  <div className="w-12 inline-block">{b?.code}</div> x {b?.quantity}
+                                  <div className="w-16 inline-block">{b?.code}</div> x {b?.quantity}
                                 </div>
                               ))}
 

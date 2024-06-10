@@ -82,7 +82,8 @@ export default function Home() {
             </button>
           </div>
         </div>
-        <div className="overflow-x-auto w-full max-h-[60vh] my-5">
+        {/* <div className="overflow-x-auto w-full max-h-[60vh] my-5"> */}
+        <div className="overflow-x-auto w-full my-5">
           <table className="table table-pin-rows table-pin-cols">
             <thead>
               <tr>
