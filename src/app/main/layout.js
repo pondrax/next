@@ -55,8 +55,9 @@ export default function RootLayout({ children }) {
               <Image src="/logo.webp" width={240} height={120} className="rounded-md" alt="logo" />
             </li>
             <li className="text-xl text-center">{NEXT_PUBLIC_APP_NAME}</li>
-            <li className="text-xs text-center mb-10">
-              Server: {NEXT_PUBLIC_API_URL}
+            <li className="mb-10">
+              <div className="mx-auto">Server:</div> 
+              <a href={NEXT_PUBLIC_API_URL} target="_blank" title="OPEN API URL" className="btn btn-sm btn-info">{NEXT_PUBLIC_API_URL}</a>
             </li>
             <li>
               <Link href="/main">
